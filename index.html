@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="noUiSlider/css/slider.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="fav.ico" type="image/x-icon">
+    <title>Кекстограмм(удалить)</title>
+</head>
+<body>
+
+  <header class="page-header">
+    <nav class="navigation">
+      <ul class="navigation__list">
+        <li class="navigation__item">
+          <button class="navigation__item-button navigation__item-button_active" type="button">
+            по умолчанию
+            <span class="visual-hidden">
+              Тогл сортировки фото по умолчанию
+            </span>
+          </button>
+        </li>
+        <li class="navigation__item">
+          <button class="navigation__item-button" type="button">
+            случайные
+            <span class="visual-hidden">
+              Тогл сортировки фото в случайном режиме
+            </span>
+          </button>
+        </li>
+        <li class="navigation__item">
+            <button class="navigation__item-button" type="button">
+              обсуждаемые
+              <span class="visual-hidden">
+                Тогл сортировки фото по популярности
+              </span>
+            </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!--Main-->
+  <main class="page-main">
+   <h1 class="visual-hidden">
+    Кекстаграм — сервис просмотра изображений. Пользователям предоставлена возможность загружать свои фотографии или просматривать фотографии, загруженные ранее другими пользователями.
+   </h1>
+
+   <!--Секция формы,галлерея картинок и загрузки нового фото-->
+   <section class="image-upload" >
+    <h2 class="visual-hidden">
+      Загруженные изображения пользователей
+    </h2>
+    <!--Форма загрузки новых фотографий-->
+    <form class="upload-form"   method="post" action="https://echo.htmlacademy.ru" enctype="multipart/form-data" autocomplete="off">
+     <!--Поле загрузки нового фото-->
+     <fieldset class="upload-form__field">
+      <input class="upload-form__input visual-hidden" id="upload" type="file" name="upload-photo" required>
+      <label class="upload-form__label" for="upload"></label>
+     </fieldset>
+     <!--скрытое поле отрисовки и наложения фильтров нового изображения-->
+     <fieldset class="upload-picture  hidden">
+      <div class="upload-picture__wrapper">
+      <!--поле тогла настройки фона-->
+      <div class="field-slider">
+      </div>
+      <div class="image-wrapper">
+      <!--Поле увеличения/уменьшения размера изо.-->
+      <p class="upload-picture__zummer zummer">
+        <button class="zummer__smaller zummer__common button" type="button">
+          -
+          <span class="visual-hidden">
+            тогл уменьшения размера изображения
+          </span>
+        </button>
+        <input class="zummer__size-input" type="text"  value="100%"  readonly>
+        <button class="zummer__bigger zummer__common button" type="button">
+          +
+          <span class="visual-hidden">
+            тогл увеличения размера изображения
+          </span>
+        </button>
+      </p>
+      <!--Изначально подгружаемая картинка-->
+      <img class="upload-picture__image" src="img/upload-default-image.jpg" alt="Изначальное фото" width="586" height="587">
+      </div>
+      <!--Список фильтров-->
+      <ul class="upload-picture__list filter">
+        <li class="filter__item">
+          <label class="filter__label">
+            <input class="filter__input visual-hidden" type="radio" value="origin" name="filter" checked>
+            <span class="filter__content">
+            </span>
+            Оригинал
+          </label>
+        </li>
+        <li class="filter__item">
+          <label class="filter__label">
+            <input class="filter__input visual-hidden" type="radio" value="chrome" name="filter">
+            <span class="filter__content"></span>
+            Хром
+          </label>
+        </li>
+        <li class="filter__item">
+          <label class="filter__label">
+            <input class="filter__input visual-hidden" type="radio" value="sepia" name="filter">
+            <span class="filter__content"></span>
+            Сепия
+          </label>
+        </li>
+        <li class="filter__item">
+          <label class="filter__label">
+            <input class="filter__input visual-hidden" type="radio" value="marvin" name="filter">
+            <span class="filter__content"></span>
+            Марвин
+          </label>
+        </li>
+        <li class="filter__item">
+          <label class="filter__label">
+            <input class="filter__input visual-hidden" type="radio" value="phobos" name="filter">
+            <span class="filter__content"></span>
+            Фобос
+          </label>
+        </li>
+        <li class="filter__item">
+          <label class="filter__label">
+            <input class="filter__input visual-hidden" type="radio" value="heat" name="filter">
+            <span class="filter__content"></span>
+            Зной
+          </label>
+        </li>
+      </ul>
+      <!--Поле ввода хэш-тега-->
+      <label class="upload-picture__label hash">
+        <input class="upload-picture__input hash__tag" type="text" name="hesh-tag" placeholder="#ХэшТег" value="" data-reg="^#[A-Za-zА-Яа-яЁё0-9]{1,19}" required minlength="3" maxlength="25"
+        data-pristine-required-message="хэш-тег начинается с символа #"
+        data-pristine-minlength-message="Минимальная длина хэш-тега 3 символа"
+        data-pristine-maxlength-message="Максимальная длина хэш-тега 25 символов">
+      </label>
+      <!--Поле ввода комментария-->
+      <label class="upload-picture__label text">
+        <textarea class="upload-picture__input text__area" name="text-area" placeholder="Введите Ваш текст"></textarea>
+      </label>
+
+      <button class="upload-picture__submit button" type="submit">
+        Опубликовать
+        <span class="visual-hidden">
+          тогл опубликования комментария
+        </span>
+      </button>
+
+      <button class="upload-picture__close button big-picture__close" type="button">
+       <span class="visual-hidden">
+        Тогл закрытия формы редактирования и наложения фильтров
+       </span>
+      </button>
+      </div>
+     </fieldset>
+    </form>
+    <div class="pictures-wrapper"></div>
+   </section>
+
+   <!--Секция вывода полноукранного изображения фото-->
+   <section class="big-picture hidden">
+    <h2 class="visual-hidden">
+      Полноекранный вывод изображения при клике
+    </h2>
+    <div class="big-picture__container">
+
+    <!--изображение-->
+    <div class="big-picture__block">
+      <img class="big-picture__image" src="photos/1.jpg" alt="Полноекранное изображение фотографии пользователя" width="600" height="600">
+    </div>
+    <!--блок с описанием-->
+    <div class="big-picture__social social">
+      <div class="social__header">
+        <img class="social__picture-author" src="img/avatar/avatar-1.svg" alt="Аватар пользователя" width="34" height="34">
+        <p class="social__description">
+          Лето.Отдых,море,кайф
+        </p>
+        <p class="social__likes">
+          нравится
+          <span class="social__likes-count">
+            142
+          </span>
+        </p>
+      </div>
+      <div class="social__comments-count">
+        <span class="social__comment-current">
+          5
+        </span>
+        из
+        <span class="social__all-comments">12</span>
+      </div>
+      <!--Cписок комментариев-->
+      <ul class="social__comments-list list">
+        <li class="list__item">
+          <img class="list__image" src="img/avatar/avatar-2.svg" alt="Аватар комментатора" width="34" height="34">
+          <p class="list__comment">
+            Мега фото! Просто обалдеть. Как вам так удалось?
+          </p>
+        </li>
+        <li class="list__item">
+          <img class="list__image" src="img/avatar/avatar-3.svg" alt="Аватар комментатора" width="34" height="34">
+          <p class="list__comment">
+            Да это фоташоп!!
+          </p>
+        </li>
+      </ul>
+      <!--Тогла загрузки оставшихся комментариев-->
+      <button class="social__comments-counts-loader button " type="button">
+        загрузить еще...
+        <span class="visual-hidden">
+          тогл загрузки оставшихся комментариев
+        </span>
+      </button>
+      <!--Форма отправки своего коммента-->
+      <div class="social__footer author-comment">
+        <img class="author-comment__image" src="img/avatar/avatar-1.svg" alt="Аватар комментатора" width="34" height="34">
+        <form class="author-comment__form" method="post">
+          <input class="author-comment__text" type="text" placeholder="Ваш комментарий">
+          <button class="author-comment__submit button"  type="submit">
+          </button>
+        </form>
+      </div>
+    </div>
+    <!--Тогл закрытия-->
+    <button class="big-picture__close button" type="button">
+      <span class="visual-hidden">
+        Тогл закрытия полноекранного окна изображения
+      </span>
+    </button>
+    </div>
+   </section>
+  </main>
+  <!--FOOTER-->
+  <footer class="page-footer">
+    <a class="page-footer__logo logo" href="#">
+      <img class="logo__image" src="img/htmla-logo.svg" width="130" height="45" alt="Логотип">
+    </a>
+    <ul class="page-footer__list">
+      <li class="page-footer__item">
+        <a class="page-footer__link page-footer__twitter" href="#">
+        </a>
+      </li>
+      <li class="page-footer__item">
+        <a class="page-footer__link page-footer__instagram" href="#">
+        </a>
+      </li>
+      <li class="page-footer__item">
+        <a class="page-footer__link page-footer__facebook" href="#">
+        </a>
+      </li>
+
+      <li class="page-footer__item">
+        <a class="page-footer__link page-footer__vkontakte" href="#">
+        </a>
+      </li>
+    </ul>
+    <p class="page-footer__text">
+      сделано в
+      <a class="page-footer__text-link" href="#">
+        htmlacademy
+      </a>
+    </p>
+  </footer>
+  <!--TEMPLATE шаблон отрисовки фотографии пользователя-->
+  <template class="pictures" id="gallery">
+    <a class="pictures__link" href="#">
+      <img class="pictures__image" src="" alt="Фото пользователя" width="182" height="182">
+      <p class="pictures__info">
+       <span class="pictures__likes pictures__likes_width">
+       </span>
+       <span class="pictures__comments">
+       </span>
+      </p>
+    </a>
+  </template>
+  <script src="noUiSlider/js/slider.min.js"></script>
+  <script src="pristine/pristine.min.js"></script>
+  <script src="js/main.js" type="module"></script>
+</body>
+</html>
