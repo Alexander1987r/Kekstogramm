@@ -22,11 +22,8 @@ if(target.tagName === 'BUTTON'){
 }
 });
 
-const sortPhotoDescriptionMessage=photoDescriptionArr;
-
-
-
-
+/*
+ const sortPhotoDescriptionMessage=photoDescriptionArr;
 sortPhotoDescriptionMessage.sort((a,b)=>{
   if(a.comments.length > b.comments.length){
     return -1;
@@ -34,7 +31,8 @@ sortPhotoDescriptionMessage.sort((a,b)=>{
     return 1;
   }
 });
-console.log(sortPhotoDescriptionMessage);
+
+*/
 
 
 

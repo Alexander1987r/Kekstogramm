@@ -1,7 +1,10 @@
 
 import { createComments } from "../Comments/comments.js";
 import { photoDescriptionArr } from "../Pictures/pictures.js";
+console.log(photoDescriptionArr);
 const COMMENT_COUNT=5;
+
+
 
 //найдем блок с изображениями загруженными пользователями
 const picturesWrapper=document.querySelector('.pictures-wrapper');
@@ -12,6 +15,10 @@ const picturesImages=picturesWrapper.children;
 
 //найдем  блок вывода полноекранного изо
 const bigPicture=document.querySelector('.big-picture');
+
+
+    //найдем тогл подгрузки оставшихся комментариев
+    const commentsLoader=bigPicture.querySelector('.social__comments-counts-loader');
 
 //найдем тогл закрытия
 const bigPictureClose=bigPicture.querySelector('.big-picture__close');
@@ -31,8 +38,7 @@ const closeBigPicture=(evt)=>{
     bigPicture.classList.add('hidden');
     bigPictureClose.removeEventListener('click',closeBigPicture);
     document.removeEventListener('keydown',closeBigPicture);
-    commentsLoader.removeEventListener('click',upLoadComments);
-  }
+    }
 }
 
 //вешаем обработчик событий на родителя (контейнер содержащий картинки)
