@@ -20,26 +20,32 @@ const picturesTemplate=document.querySelector('#gallery').content;
 const picturesTemplateFragment=document.createDocumentFragment();
 
 
+//функция вывода
+const renderingPhotos=(arr)=>{
 
-//пройдемся по массиву forEach
-photoDescriptionArr.forEach((elem)=>{
+  //пройдемся по массиву forEach
+  arr.forEach((elem)=>{
 
-  //клонируем фрагмент
-  const clonePicturesTemplate=picturesTemplate.cloneNode(true);
-  //найдем тег img куда прокинем изображение
-  clonePicturesTemplate.querySelector('.pictures__image').src=elem.url;
-  //найдем тег span куда прокинем количество лайков
-  clonePicturesTemplate.querySelector('.pictures__likes').textContent=elem.likes;
-  //найдем тег span куда прокинем количество комментариев
-  clonePicturesTemplate.querySelector('.pictures__comments').textContent=elem.comments.length;
+    //клонируем фрагмент
+    const clonePicturesTemplate=picturesTemplate.cloneNode(true);
+    //найдем тег img куда прокинем изображение
+    clonePicturesTemplate.querySelector('.pictures__image').src=elem.url;
+    //найдем тег span куда прокинем количество лайков
+    clonePicturesTemplate.querySelector('.pictures__likes').textContent=elem.likes;
+    //найдем тег span куда прокинем количество комментариев
+    clonePicturesTemplate.querySelector('.pictures__comments').textContent=elem.comments.length;
 
-  //прокинем в фрагмент
-  picturesTemplateFragment.appendChild(clonePicturesTemplate);
+    //прокинем в фрагмент
+    picturesTemplateFragment.appendChild(clonePicturesTemplate);
 
-});
-//прокидываем фрагмент в секцию
-picturesWrapper.appendChild(picturesTemplateFragment);
+  });
+  //прокидываем фрагмент в секцию
+  picturesWrapper.appendChild(picturesTemplateFragment);
 
-export {photoDescriptionArr};
+}
+
+renderingPhotos(photoDescriptionArr);
+
+export {photoDescriptionArr,renderingPhotos};
 
 

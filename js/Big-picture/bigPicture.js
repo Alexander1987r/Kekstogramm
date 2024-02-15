@@ -1,7 +1,6 @@
 
 import { createComments } from "../Comments/comments.js";
 import { photoDescriptionArr } from "../Pictures/pictures.js";
-console.log(photoDescriptionArr);
 const COMMENT_COUNT=5;
 
 
