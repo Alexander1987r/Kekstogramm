@@ -25,6 +25,8 @@ if( (target.tagName === 'BUTTON') && (!target.classList.contains('navigation__it
    target.classList.add('navigation__item-button_active');
    //переменная с id
    const filterName=target.id;
+   /*
+
    const sortArray=(filter)=>{
     switch (filter){
       case 'filter-default':
@@ -58,7 +60,9 @@ if( (target.tagName === 'BUTTON') && (!target.classList.contains('navigation__it
     return photoArrCopy;
    }
    sortArray(filterName);
-}});
+   */
+}
+});
 
 
 
