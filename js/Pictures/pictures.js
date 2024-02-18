@@ -1,5 +1,6 @@
 
 
+import { getBigPicture } from '../Big-picture/bigPicture.js';
 //получим обьект начальная база данных
 import { initialData } from '../Data/initialData.js';
 
@@ -45,6 +46,7 @@ const renderingPhotos=(arr)=>{
 }
 
 renderingPhotos(photoDescriptionArr);
+getBigPicture(photoDescriptionArr);
 
 export {photoDescriptionArr,renderingPhotos};
 

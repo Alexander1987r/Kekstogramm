@@ -1,6 +1,5 @@
 
 import { createComments } from "../Comments/comments.js";
-import { photoDescriptionArr } from "../Pictures/pictures.js";
 const COMMENT_COUNT=5;
 
 
@@ -22,30 +21,13 @@ const bigPicture=document.querySelector('.big-picture');
 //найдем тогл закрытия
 const bigPictureClose=bigPicture.querySelector('.big-picture__close');
 
-//функция открытия полноекранного изо
-const openBigPicture=(evt)=>{
-  const target=evt.target;
-  if(target.closest('.pictures__image')){
-    bigPicture.classList.remove('hidden');
-    bigPictureClose.addEventListener('click',closeBigPicture);
-    document.addEventListener('keydown',closeBigPicture);
-  }
-}
-//функция закрытия полноекранного изо
-const closeBigPicture=(evt)=>{
-  if( evt.target.closest('.big-picture__close') || evt.key === 'Escape' ){
-    bigPicture.classList.add('hidden');
-    bigPictureClose.removeEventListener('click',closeBigPicture);
-    document.removeEventListener('keydown',closeBigPicture);
-    }
-}
 
-//вешаем обработчик событий на родителя (контейнер содержащий картинки)
-picturesWrapper.addEventListener('click',openBigPicture);
-
-//функция замыкания загружающая ту картинку по которой произойдет клик + настройки вывода количества комментариев и сами комментарии
+const getBigPicture=(array)=>{
+ //функция замыкания загружающая ту картинку по которой произойдет клик + настройки вывода количества комментариев и сами комментарии
 const checkHundlerAdd=(pictures,users)=>{
   pictures.addEventListener('click',(evt)=>{
+
+
 
     //находим елемент куда загрузим изо
     const bigImage=bigPicture.querySelector('.big-picture__image');
@@ -71,6 +53,31 @@ const checkHundlerAdd=(pictures,users)=>{
 
     let currentCommentCountInt=COMMENT_COUNT;
 
+
+//функция открытия полноекранного изо
+const openBigPicture=(evt)=>{
+  const target=evt.target;
+  if(target.closest('.pictures__image')){
+    bigPicture.classList.remove('hidden');
+    bigPictureClose.addEventListener('click',closeBigPicture);
+    document.addEventListener('keydown',closeBigPicture);
+    //повесим обработчик по клику на тогла загрузки доп. изо
+    commentsLoader.addEventListener('click',upLoadComments);
+  }
+}
+//функция закрытия полноекранного изо
+const closeBigPicture=(evt)=>{
+  if( evt.target.closest('.big-picture__close') || evt.key === 'Escape' ){
+    bigPicture.classList.add('hidden');
+    bigPictureClose.removeEventListener('click',closeBigPicture);
+    document.removeEventListener('keydown',closeBigPicture);
+
+    commentsLoader.removeEventListener('click',upLoadComments);
+    }
+}
+
+//вешаем обработчик событий на родителя (контейнер содержащий картинки)
+picturesWrapper.addEventListener('click',openBigPicture);
 
     //ставим условие скрытия тогла оставшихся комментариев если текущее количество комментариев боьше общего
     if(currentCommentCountInt >= commentsCountInt){
@@ -109,15 +116,13 @@ const checkHundlerAdd=(pictures,users)=>{
       //вызов функции прокидывающей список комментариев
       createComments(users.comments,currentCommentCountInt);
     }
-    //повесим обработчик по клику на тогла загрузки доп. изо
-    commentsLoader.addEventListener('click',upLoadComments);
   });
 }
-
-
 //переберем массива изображений циклом(вызовем функцию замыкания)
 for(let i=0;i<picturesImages.length;i++){
-  checkHundlerAdd(picturesImages[i],photoDescriptionArr[i]);
+  checkHundlerAdd(picturesImages[i],array[i]);
 }
+}
+ export {getBigPicture};
 
 
