@@ -299,7 +299,7 @@ html,body{
   position: absolute;
   width: 80%;
   box-sizing: border-box;
-  top: 80px;
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
@@ -310,7 +310,8 @@ html,body{
   background-repeat: no-repeat;
   background-size: 30px 30px;
   background-position: 15px  center;
-
+  text-align: center;
+  text-transform: uppercase;
 }
 .hash-error::before{
   position: absolute;
@@ -335,7 +336,7 @@ html,body{
   outline: none;
 }
 .hash{
-  margin-bottom: 77px;
+  margin-bottom: 100px;
 }
 .text__area {
   display: block;
