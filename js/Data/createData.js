@@ -9,7 +9,7 @@ const getCommentsUser=(obj)=>{
           user.push(
             {
                 id:i+1,
-                avatar:`img/avatar/avatar-${getRandomPositiveInteger(1,7)}.svg`,
+                avatar:`img/avatar-${getRandomPositiveInteger(1,7)}.svg`,
                 message:getRandomArrayElement(comments),
                 name:getRandomArrayElement(names),
             });
