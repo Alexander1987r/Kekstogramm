@@ -1,7 +1,6 @@
 import { loadImageUser } from "../Preview/preview.js";
 import { changeSize } from "../Size/size.js";
 import { getNoUiSlider } from "../noUiSlider/slider.js";
-import { buttonHendler } from "../Validation/validation.js";
 //загрузка выбираемого фото пользователя
 
 //найдем форму
@@ -57,17 +56,13 @@ const openUploadPicture=(evt)=>{
 
   //вызов функции изменения настроек и зависимостей noUiSlider
   getNoUiSlider(evt);
-
-  //вешаем обработчик событии на форму (по клику тогла отправки)
-  uploadForm.addEventListener('submit',buttonHendler);
 }
 
 //функция закрытия блока нового фото
-const closeUploadPicture=()=>{
+export const closeUploadPicture=()=>{
  uploadPicture.classList.add('hidden');
  uploadPictureClose.removeEventListener('click',closeUploadPicture);
  uploadPictureZummer.removeEventListener('click',changeSize);
- uploadForm.removeEventListener('submit',buttonHendler);
  fieldSlider.style.display='none';
  uploadPictureImage.style.filter='';
 }

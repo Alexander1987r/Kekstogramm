@@ -30,3 +30,26 @@ export const getDiscussedArray=(array)=>{
     return b.comments.length-a.comments.length;
   });
 }
+
+//функция вывода на екран сообщения об ошибке при недоступном сервере
+export const showAlert=(message)=>{
+  const alertContainer=document.createElement('div');
+  alertContainer.style.position='absolute';
+  alertContainer.style.zIndex='1';
+  alertContainer.style.left='0';
+  alertContainer.style.top='0';
+  alertContainer.style.right='0';
+  alertContainer.style.padding='10px 3px';
+  alertContainer.style.fontSize='26px';
+  alertContainer.style.textAlign='center';
+  alertContainer.style.backgroundColor='red';
+  alertContainer.style.color='white';
+
+  alertContainer.textContent=message;
+  document.body.append(alertContainer);
+
+  //ставим таймер
+  setTimeout(()=>{
+    alertContainer.remove();
+  },5000);
+}

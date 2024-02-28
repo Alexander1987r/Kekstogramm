@@ -45,7 +45,6 @@ const renderingPhotos=(arr)=>{
 
 }
 
-renderingPhotos(photoDescriptionArr);
 getBigPicture(photoDescriptionArr);
 
 export {photoDescriptionArr,renderingPhotos};

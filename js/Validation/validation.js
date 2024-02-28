@@ -1,4 +1,4 @@
-
+import { showAlert } from "../Utils/utils.js";
 //найдем форму
 const uploadForm=document.querySelector('.upload-form');
 
@@ -24,14 +24,38 @@ const hashTagValidator=(value)=>{
 }
 
 pristineLibrary.addValidator(uploadPictureInput,hashTagValidator,'Форма не валидна');
-//функция buttonHendler
-export const buttonHendler=(evt)=>{
- const isValid=pristineLibrary.validate();
- if(isValid){
-  console.log('yes');
- }else{
+
+
+//функция setter вызываемая в точке входа
+export const setUserFormSubmit=(onSuccess)=>{
+  //вешаем обработчик событии на форму (по клику тогла отправки)
+uploadForm.addEventListener('submit',(evt)=>{
   evt.preventDefault();
-  uploadForm.reset();
-  console.log('no');
- };
+  const isValide=pristineLibrary.validate();
+  if(isValide){
+    const formData = new FormData(evt.target);
+    fetch('https://echo.htmlacademy.ru',
+      {
+        method: 'POST',
+        body: formData,
+      },
+    )
+    .then((responce)=>{
+      if(responce.ok){
+        onSuccess();
+      }else{
+        throw new Error('Форма не валидна');
+      }
+    })
+    .catch((err)=>{
+      showAlert(err);
+    });
+    uploadPictureInput.value='';
+    console.log('Форма  валидна!');
+  }else{
+    console.log('Форма не валидна!');
+    uploadPictureInput.value='';
+  }
+});
 }
+
