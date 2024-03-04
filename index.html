@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="fav.ico" type="image/x-icon">
-    <title>Кекстограмм(удалить)</title>
+    <title>Кекстограмм(проект)</title>
 </head>
 <body>
 
@@ -56,7 +56,7 @@
     <form class="upload-form"   method="post" action="https://echo.htmlacademy.ru" enctype="multipart/form-data" autocomplete="off">
      <!--Поле загрузки нового фото-->
      <fieldset class="upload-form__field">
-      <input class="upload-form__input visual-hidden" id="upload" type="file" name="upload-photo" required>
+      <input class="upload-form__input visual-hidden" id="upload" type="file" name="filename" required>
       <label class="upload-form__label" for="upload"></label>
      </fieldset>
      <!--скрытое поле отрисовки и наложения фильтров нового изображения-->
@@ -74,7 +74,7 @@
             тогл уменьшения размера изображения
           </span>
         </button>
-        <input class="zummer__size-input" type="text"  value="100%"  readonly>
+        <input class="zummer__size-input" type="text"  value="100%"  name="scale" readonly>
         <button class="zummer__bigger zummer__common button" type="button">
           +
           <span class="visual-hidden">
@@ -89,7 +89,7 @@
       <ul class="upload-picture__list filter">
         <li class="filter__item">
           <label class="filter__label">
-            <input class="filter__input visual-hidden" type="radio" value="origin" name="filter" checked>
+            <input class="filter__input visual-hidden" type="radio" value="origin" name="effect" checked>
             <span class="filter__content">
             </span>
             Оригинал
@@ -97,35 +97,35 @@
         </li>
         <li class="filter__item">
           <label class="filter__label">
-            <input class="filter__input visual-hidden" type="radio" value="chrome" name="filter">
+            <input class="filter__input visual-hidden" type="radio" value="chrome" name="effect">
             <span class="filter__content"></span>
             Хром
           </label>
         </li>
         <li class="filter__item">
           <label class="filter__label">
-            <input class="filter__input visual-hidden" type="radio" value="sepia" name="filter">
+            <input class="filter__input visual-hidden" type="radio" value="sepia" name="effect">
             <span class="filter__content"></span>
             Сепия
           </label>
         </li>
         <li class="filter__item">
           <label class="filter__label">
-            <input class="filter__input visual-hidden" type="radio" value="marvin" name="filter">
+            <input class="filter__input visual-hidden" type="radio" value="marvin" name="effect">
             <span class="filter__content"></span>
             Марвин
           </label>
         </li>
         <li class="filter__item">
           <label class="filter__label">
-            <input class="filter__input visual-hidden" type="radio" value="phobos" name="filter">
+            <input class="filter__input visual-hidden" type="radio" value="phobos" name="effect">
             <span class="filter__content"></span>
             Фобос
           </label>
         </li>
         <li class="filter__item">
           <label class="filter__label">
-            <input class="filter__input visual-hidden" type="radio" value="heat" name="filter">
+            <input class="filter__input visual-hidden" type="radio" value="heat" name="effect">
             <span class="filter__content"></span>
             Зной
           </label>

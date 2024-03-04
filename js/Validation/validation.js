@@ -34,13 +34,17 @@ uploadForm.addEventListener('submit',(evt)=>{
   const isValide=pristineLibrary.validate();
   if(isValide){
     const formData = new FormData(evt.target);
-    fetch('https://echo.htmlacademy.ru',
+    for(let item of formData){
+      console.log(item);
+    }
+    fetch('https://25.javascript.htmlacademy.pro/kekstagram',
       {
         method: 'POST',
         body: formData,
       },
     )
     .then((responce)=>{
+
       if(responce.ok){
         onSuccess();
       }else{
