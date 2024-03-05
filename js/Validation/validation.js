@@ -49,10 +49,10 @@ uploadForm.addEventListener('submit',(evt)=>{
     const formData = new FormData(evt.target);
     sendData(onSuccess,onError,formData);
     unblockSubmitButton();
-    uploadPictureInput.value='';
+    uploadForm.reset();
      }else{
     uploadPictureInput.value='';
-  }
+   }
 });
 }
 

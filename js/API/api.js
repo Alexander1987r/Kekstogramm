@@ -23,7 +23,7 @@ fetch('https://25.javascript.htmlacademy.pro/kekstagram/data')
 
 //функция отправки данных на сервер
 export const sendData=(onSuccess,onError,body)=>{
-  fetch('https://25.javascript.htmlacademy.pro/kekstagra',
+  fetch('https://25.javascript.htmlacademy.pro/kekstagram',
       {
         method: 'POST',
         body: body,
