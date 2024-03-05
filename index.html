@@ -196,13 +196,13 @@
       <!--Cписок комментариев-->
       <ul class="social__comments-list list">
         <li class="list__item">
-          <img class="list__image" src="img/avatar/avatar-2.svg" alt="Аватар комментатора" width="34" height="34">
+          <img class="list__image" src="img/avatar-2.svg" alt="Аватар комментатора" width="34" height="34">
           <p class="list__comment">
             Мега фото! Просто обалдеть. Как вам так удалось?
           </p>
         </li>
         <li class="list__item">
-          <img class="list__image" src="img/avatar/avatar-3.svg" alt="Аватар комментатора" width="34" height="34">
+          <img class="list__image" src="img/avatar-3.svg" alt="Аватар комментатора" width="34" height="34">
           <p class="list__comment">
             Да это фоташоп!!
           </p>
@@ -277,6 +277,34 @@
       </p>
     </a>
   </template>
+
+  <!--Шаблон успешно отправленных на сервер данных-->
+  <template class="success">
+    <section class="success__inner">
+     <div class="success__wrapper">
+      <h2 class="success__title">
+       Изображение успешно загружено
+      </h2>
+      <button class="success__close" type="button">
+       Круто!
+      </button>
+     </div>
+    </section>
+  </template>
+
+   <!--Шаблон не успешно отправленных на сервер данных-->
+   <template class="error">
+     <section class="error__inner">
+      <div class="error__wrapper">
+       <h2 class="error__title">
+        Изображение не загружено
+       </h2>
+       <button class="error__close" type="button">
+        Закрыть
+       </button>
+      </div>
+     </section>
+   </template>
   <script src="noUiSlider/js/slider.min.js"></script>
   <script src="pristine/pristine.min.js"></script>
   <script src="js/main.js" type="module"></script>

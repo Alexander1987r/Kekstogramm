@@ -719,3 +719,40 @@ background-repeat: no-repeat;
   text-align: start;
  }
 }
+
+/*поп-ап успешной и не успешной отправки*/
+.success__inner,
+.error__inner{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0, 0, 0.8);
+}
+.success__wrapper,
+.error__wrapper{
+  background-color: #3c3614;
+  color: #ffe753;
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 50px 50px;
+}
+.success__title,
+.error__title{
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+.success__close,
+.error__close{
+  display: block;
+  padding: 0 5px;
+  border: 1px solid rgba(255,255, 255, 1);
+  background-color: transparent;
+  color: rgba(255,255, 255, 1);
+  border-radius: 5px;
+  margin: 0 auto;
+}

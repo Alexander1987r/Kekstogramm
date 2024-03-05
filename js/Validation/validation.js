@@ -1,9 +1,10 @@
-import { showAlert } from "../Utils/utils.js";
+import { sendData } from "../API/api.js";
+
 //найдем форму
 const uploadForm=document.querySelector('.upload-form');
-
 //найдем поле инпут
 const uploadPictureInput=uploadForm.querySelector('.upload-picture__input');
+const uploadPictureSubmit=uploadForm.querySelector('.upload-picture__submit');
 
 //подключаем библиотеку Pristine
 const pristineLibrary=new Pristine(uploadForm,{
@@ -25,39 +26,31 @@ const hashTagValidator=(value)=>{
 
 pristineLibrary.addValidator(uploadPictureInput,hashTagValidator,'Форма не валидна');
 
+//функция блокировки кнопки отправки
+const blockSubmitButton=()=>{
+  uploadPictureSubmit.disabled=true;
+  uploadPictureSubmit.textContent='Отправляю...'
+ }
+
+ //функция разблокировки кнопки отправки
+ const unblockSubmitButton=()=>{
+  uploadPictureSubmit.disabled=false;
+  uploadPictureSubmit.textContent='Опубликовать'
+ }
 
 //функция setter вызываемая в точке входа
-export const setUserFormSubmit=(onSuccess)=>{
+export const setUserFormSubmit=(onSuccess,onError)=>{
   //вешаем обработчик событии на форму (по клику тогла отправки)
 uploadForm.addEventListener('submit',(evt)=>{
   evt.preventDefault();
   const isValide=pristineLibrary.validate();
   if(isValide){
+    blockSubmitButton();
     const formData = new FormData(evt.target);
-    for(let item of formData){
-      console.log(item);
-    }
-    fetch('https://25.javascript.htmlacademy.pro/kekstagram',
-      {
-        method: 'POST',
-        body: formData,
-      },
-    )
-    .then((responce)=>{
-
-      if(responce.ok){
-        onSuccess();
-      }else{
-        throw new Error('Форма не валидна');
-      }
-    })
-    .catch((err)=>{
-      showAlert(err);
-    });
+    sendData(onSuccess,onError,formData);
+    unblockSubmitButton();
     uploadPictureInput.value='';
-    console.log('Форма  валидна!');
-  }else{
-    console.log('Форма не валидна!');
+     }else{
     uploadPictureInput.value='';
   }
 });

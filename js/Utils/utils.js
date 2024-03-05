@@ -1,3 +1,7 @@
+import { closeUploadPicture } from "../Upload/uploadFile.js";
+
+const body=document.body;
+
 //функция getRandomPositiveInteger, возвращающая случайное целое число из переданного диапазона включительно
 export const getRandomPositiveInteger=(minValue,maxValue)=>{
        const lower=Math.ceil(Math.min(Math.abs(minValue),Math.abs(maxValue)));
@@ -53,3 +57,27 @@ export const showAlert=(message)=>{
     alertContainer.remove();
   },5000);
 }
+
+//функция успешной отправки данных
+export const onUploadSuccess=()=>{
+  //нахожу template с удачным извещением
+  const success=document.querySelector('.success').content.querySelector('.success__inner');
+  const successTemplate=success.cloneNode(true);
+  closeUploadPicture();
+  body.appendChild(successTemplate);
+  successTemplate.addEventListener('click',()=>{
+   successTemplate.remove();
+  });
+ }
+ //функция не успешной отправки данных
+ export const onUploadError=()=>{
+   //нахожу template с удачным извещением
+   const error=document.querySelector('.error').content.querySelector('.error__inner');
+
+   const errorTemplate=error.cloneNode(true);
+   closeUploadPicture();
+   body.appendChild(errorTemplate);
+   errorTemplate.addEventListener('click',()=>{
+    errorTemplate.remove();
+   });
+  }
