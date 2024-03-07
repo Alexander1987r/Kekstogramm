@@ -200,9 +200,9 @@ body{
 
 /*стили для слайдер*/
 .field-slider{
-  width: 500px;
+  width: 90%;
   position:absolute;
-  top: 540px;
+  top: 28%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -705,6 +705,9 @@ background-repeat: no-repeat;
     height:57px;
     font-size: 14px;
   }
+  .field-slider{
+   top: 33%;
+  }
 }
 @media(min-width:768px){
   .page-header {
@@ -773,6 +776,9 @@ background-repeat: no-repeat;
     width: 50px;
     height:80px;
   }
+  .field-slider{
+    top: 38%;
+   }
 }
 @media(min-width:1024px){
   .page-header {
@@ -824,8 +830,11 @@ background-repeat: no-repeat;
  }
  .filter__label {
   width: 70px;
-  height:100px; 
+  height:100px;
 }
+.field-slider{
+  top: 46%;
+ }
 }
 
 /*поп-ап успешной и не успешной отправки*/
